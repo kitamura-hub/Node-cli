@@ -24,6 +24,9 @@ fs.readFile(filePath, { encoding: "utf8" }, (err, file) => {
     return;
   }
   // MarkdownファイルをHTMLファイルに変換する
-  const html = marked(file)
+  const html = marked(file, {
+    // オプションの値を使用する
+    gfm: cliOptions.gfm,
+  });
   console.log(html);
 });
