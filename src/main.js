@@ -1,5 +1,7 @@
 // commanderモジュールをprogramとしてインポートする
 const commander = require("commander");
+// fsモジュールをインポート
+const fs = require("fs");
 // コマンドライン引数をcommanderでパースする
 commander.parse(process.argv);
 
