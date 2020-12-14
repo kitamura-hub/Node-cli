@@ -3,9 +3,17 @@ const commander = require("commander");
 const fs = require("fs");
 const marked = require("marked");
 
-// コマンドライン引数からファイルパスを取得する
+// gfmオプションを定義する
+commander.option("--gfm", "GFMを有効にする");
 commander.parse(process.argv);
+// コマンドライン引数からファイルパスを取得
 const filePath = commander.args[0];
+
+// コマンドライン引数のオプションを取得し、デフォルトのオプションを上書きする
+const cliOptions = {
+  gfm: false,
+  ...commander.opts(),
+}
 
 // ファイルを非同期で読み込む(utf-8形式で)
 fs.readFile(filePath, { encoding: "utf8" }, (err, file) => {
