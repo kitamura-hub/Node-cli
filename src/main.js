@@ -1,7 +1,7 @@
-// commanderモジュールをprogramとしてインポートする
+// インポート群
 const commander = require("commander");
-// fsモジュールをインポート
 const fs = require("fs");
+const marked = require("marked");
 
 // コマンドライン引数からファイルパスを取得する
 commander.parse(process.argv);
@@ -15,5 +15,7 @@ fs.readFile(filePath, { encoding: "utf8" }, (err, file) => {
     process.exit(1);
     return;
   }
-  console.log(file);
+  // MarkdownファイルをHTMLファイルに変換する
+  const html = marked(file)
+  console.log(html);
 });
